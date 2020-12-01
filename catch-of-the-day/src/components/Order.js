@@ -1,15 +1,15 @@
-import React from 'react';
-import { formatPrice } from '../helpers';
-
+import React from "react";
+import { formatPrice } from "../helpers";
+/**
+ * LEFT OFF ON VIDEO 18: "Persisting our State with Firebase"
+ */
 class Order extends React.Component {
   renderOrder = (key) => {
     const fish = this.props.fishes[key];
     const count = this.props.order[key];
-    const isAvailable = fish.status === 'available';
+    const isAvailable = fish.status === "available";
     if (!isAvailable) {
-      return (
-        <li key={key}>Sorry {fish ? fish.name : 'fish'} is no longer available</li>
-      );
+      return <li key={key}>Sorry {fish ? fish.name : "fish"} is no longer available</li>;
     }
     return (
       <li key={key}>
@@ -24,9 +24,9 @@ class Order extends React.Component {
     const total = orderIds.reduce((prevTotal, key) => {
       const fish = this.props.fishes[key];
       const count = this.props.order[key];
-      const isAvailable = fish && fish.status === 'available';
+      const isAvailable = fish && fish.status === "available";
       if (isAvailable) {
-        return prevTotal + (count * fish.price);
+        return prevTotal + count * fish.price;
       }
       return prevTotal;
     }, 0);
@@ -34,9 +34,7 @@ class Order extends React.Component {
     return (
       <div className="order-wrap">
         <h2>Your Order</h2>
-        <ul className="order">
-          {orderIds.map(this.renderOrder)}
-        </ul>
+        <ul className="order">{orderIds.map(this.renderOrder)}</ul>
         <div className="total">
           Total:
           <strong>{formatPrice(total)}</strong>
