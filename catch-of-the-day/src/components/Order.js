@@ -1,8 +1,6 @@
 import React from "react";
 import { formatPrice } from "../helpers";
-/**
- * LEFT OFF ON VIDEO 18: "Persisting our State with Firebase"
- */
+
 class Order extends React.Component {
   renderOrder = (key) => {
     const fish = this.props.fishes[key];
